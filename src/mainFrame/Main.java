@@ -2,35 +2,49 @@
 package mainFrame;
 
 import java.io.IOException;
+import java.io.ObjectOutputStream;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.util.Vector;
 
 public class Main {
-    private static final int PORT = 12345; // 포트 번호 지정
+	private static final int PORT = 12345; // 포트 번호 지정
 
-    public Main() {
-    }
+	public Main() {
+	}
 
-    public void initialize() {
-        System.out.println("Server 대기중."); // 서버 대기 중 메시지
-    }
+	public void initialize() {
+		System.out.println("Server 대기중."); // 서버 대기 중 메시지
+	}
 
-    private void run() {
-        try (ServerSocket serverSocket = new ServerSocket(PORT)) {
-            while (true) {
-                Socket clientSocket = serverSocket.accept(); // 클라이언트 연결 대기
-                System.out.println("클라이언트가 연결되었습니다.");
-                // 새로운 스레드에서 클라이언트 요청 처리 가능
-                // new ClientHandler(clientSocket).start();
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
+	private void run() throws IOException {
+		try (ServerSocket serverSocket = new ServerSocket(PORT)) {
+			while (true) {
+				try (Socket clientSocket = serverSocket.accept();
+						ObjectOutputStream out = new ObjectOutputStream(clientSocket.getOutputStream())) {
 
-    public static void main(String[] args) {
-        Main main = new Main();
-        main.initialize();
-        main.run();
-    }
+					// 예시 데이터 전송
+					Vector<String> data = new Vector<>();
+					data.add("데이터 1");
+					data.add("데이터 2");
+					data.add("데이터 3");
+
+					out.writeObject(data);
+					out.flush();
+					System.out.println("클라이언트에 데이터 전송 완료");
+
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			} // 새로운 스레드에서 클라이언트 요청 처리 가능
+				// new ClientHandler(clientSocket).start();
+		}
+
+	}
+
+	public static void main(String[] args) throws IOException {
+		Main main = new Main();
+		main.initialize();
+		main.run();
+	}
 }

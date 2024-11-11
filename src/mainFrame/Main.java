@@ -23,16 +23,6 @@ public class Main {
 				try (Socket clientSocket = serverSocket.accept();
 						ObjectOutputStream out = new ObjectOutputStream(clientSocket.getOutputStream())) {
 
-					// 예시 데이터 전송
-					Vector<String> data = new Vector<>();
-					data.add("데이터 1");
-					data.add("데이터 2");
-					data.add("데이터 3");
-
-					out.writeObject(data);
-					out.flush();
-					System.out.println("클라이언트에 데이터 전송 완료");
-
 				} catch (IOException e) {
 					e.printStackTrace();
 				}

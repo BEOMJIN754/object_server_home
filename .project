@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<projectDescription>
+	<name>이범진_객체B_server_final</name>
+	<comment></comment>
+	<projects>
+	</projects>
+	<buildSpec>
+		<buildCommand>
+			<name>org.eclipse.jdt.core.javabuilder</name>
+			<arguments>
+			</arguments>
+		</buildCommand>
+	</buildSpec>
+	<natures>
+		<nature>org.eclipse.jdt.core.javanature</nature>
+	</natures>
+	<linkedResources>
+		<link>
+			<name>src/remoteInterface</name>
+			<type>2</type>
+			<locationURI>PARENT-1-PROJECT_LOC/%EA%B9%80%EB%8F%99%EC%97%B0_LmsLib/remoteInterface</locationURI>
+		</link>
+		<link>
+			<name>src/valueObject</name>
+			<type>2</type>
+			<locationURI>PARENT-1-PROJECT_LOC/%EA%B9%80%EB%8F%99%EC%97%B0_LmsLib/valueObject</locationURI>
+		</link>
+	</linkedResources>
+	<variableList>
+		<variable>
+			<name>copy_PARENT</name>
+			<value>$%7BPARENT-2-PROJECT_LOC%7D/%EC%9E%A1%20%EB%AC%B8%EC%84%9C/%EA%B0%9D%EC%B2%B4%ED%94%84/%5B1113%5D60202179_%EA%B9%80%EB%8F%99%EC%97%B0/%5B1113%5D60202179_%EA%B9%80%EB%8F%99%EC%97%B0</value>
+		</variable>
+	</variableList>
+</projectDescription>

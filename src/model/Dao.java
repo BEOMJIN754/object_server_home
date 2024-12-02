@@ -9,7 +9,7 @@ import java.lang.reflect.InvocationTargetException;
 import java.util.Scanner;
 import java.util.Vector;
 
-public class DataAccessObject {
+public class Dao {
 
 	public MModel getAModel(String fileName, Class<?> clazz, String key) {
 		try {			

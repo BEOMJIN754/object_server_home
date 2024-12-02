@@ -2,7 +2,7 @@ package control;
 
 import java.util.Vector;
 
-import model.DataAccessObject;
+import model.Dao;
 import model.MGangjwa;
 import model.MModel;
 import remoteInterface.IResult;
@@ -26,12 +26,12 @@ public class CResult implements IResult{
 			
 			mGangjwas.add(mGangjwa);
 		}
-		DataAccessObject DataAccessObject = new DataAccessObject();
+		Dao DataAccessObject = new Dao();
 		DataAccessObject.save(fileName, mGangjwas);
 	}
 
 	public Vector<VGangjwa> get(String fileName) {
-		DataAccessObject dataAccessObject = new DataAccessObject();
+		Dao dataAccessObject = new Dao();
 		Vector<MModel> mModels = dataAccessObject.getModels(fileName, MGangjwa.class);
 		
 		Vector<VGangjwa> vGangjwas = new Vector<VGangjwa>();

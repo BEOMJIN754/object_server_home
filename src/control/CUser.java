@@ -1,15 +1,20 @@
 package control;
 
 import model.Dao;
+import model.DaoFile;
 import model.MUser;
 import remoteInterface.IUser;
 import valueObject.VUser;
 
-public class CUser implements IUser {
+public class CUser extends CControl implements IUser {
+
+	public CUser(Dao dao) {
+		super(dao);
+		// TODO Auto-generated constructor stub
+	}
 
 	public VUser getUser(String userId) {
-		Dao dataAccessObject = new Dao();
-		MUser mUser = (MUser) dataAccessObject.getAModel(userId, MUser.class, userId);
+		MUser mUser = (MUser) dao.getARow(userId, userId,MUser.class );
 		if (mUser != null) {
 			VUser vUser = new VUser(mUser.getUserId(), mUser.getName(), mUser.getAddress());
 			return vUser;

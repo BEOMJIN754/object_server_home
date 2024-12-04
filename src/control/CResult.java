@@ -3,16 +3,21 @@ package control;
 import java.util.Vector;
 
 import model.Dao;
+import model.DaoFile;
 import model.MGangjwa;
 import model.MModel;
 import remoteInterface.IResult;
 import valueObject.VGangjwa;
 
-public class CResult implements IResult{
+public class CResult extends CControl implements IResult{
 
-	public CResult() {		
-	}
 	
+	
+	public CResult(Dao dao) {
+		super(dao);
+		// TODO Auto-generated constructor stub
+	}
+
 	public void save(String fileName, Vector<VGangjwa> vGangjwas) {
 		Vector<MModel> mGangjwas = new Vector<MModel>();
 		for (VGangjwa vGangjwa: vGangjwas) {
@@ -26,13 +31,11 @@ public class CResult implements IResult{
 			
 			mGangjwas.add(mGangjwa);
 		}
-		Dao DataAccessObject = new Dao();
-		DataAccessObject.save(fileName, mGangjwas);
+		dao.setRows(fileName, mGangjwas);
 	}
 
 	public Vector<VGangjwa> get(String fileName) {
-		Dao dataAccessObject = new Dao();
-		Vector<MModel> mModels = dataAccessObject.getModels(fileName, MGangjwa.class);
+		Vector<MModel> mModels = dao.getRows(fileName, MGangjwa.class);
 		
 		Vector<VGangjwa> vGangjwas = new Vector<VGangjwa>();
 		for (MModel mModel: mModels) {

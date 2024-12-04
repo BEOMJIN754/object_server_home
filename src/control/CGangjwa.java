@@ -3,18 +3,19 @@ package control;
 import java.util.Vector;
 
 import model.Dao;
+import model.DaoFile;
 import model.MGangjwa;
 import model.MModel;
 import remoteInterface.IGangjwa;
 import valueObject.VGangjwa;
 
-public class CGangjwa implements IGangjwa{
-	public CGangjwa() {
+public class CGangjwa extends CControl implements IGangjwa{
+	public CGangjwa(Dao dao) {
+		super(dao);
 	}
 	
 	public Vector<VGangjwa> getData(String fileName) {
-		Dao dataAccessObject = new Dao();
-		Vector<MModel> mModels = dataAccessObject.getModels(fileName, MGangjwa.class);
+		Vector<MModel> mModels = dao.getRows(fileName, MGangjwa.class);
 		
 		Vector<VGangjwa> vGangjwas = new Vector<VGangjwa>();
 		for (MModel mModel: mModels) {			

@@ -6,16 +6,16 @@ import remoteInterface.ILogin;
 import valueObject.VLogin;
 import valueObject.VResult;
 
-public class CLogin implements ILogin {
+public class CLogin extends CControl implements ILogin {
 
- 	public CLogin() {
+ 	public CLogin(Dao dao) {
+ 		super(dao);
 	}
  	
 	public VResult login(VLogin vLogin) {
 		VResult vResult = null;
 		
-		Dao dataAccessObject = new Dao();
-		MLogin mLogin = (MLogin) dataAccessObject.getAModel("UserId", MLogin.class, vLogin.getUserId());
+		MLogin mLogin = (MLogin) dao.getARow("UserId", vLogin.getUserId(), MLogin.class);
 		if (mLogin != null) {
 			if (vLogin.getPassword().contentEquals(mLogin.getPassword())) {
 				vResult = new VResult();

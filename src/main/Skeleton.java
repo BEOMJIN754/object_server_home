@@ -13,6 +13,8 @@ import control.CGangjwa;
 import control.CLogin;
 import control.CResult;
 import control.CUser;
+import model.Dao;
+import model.DaoFile;
 import remoteInterface.IDirectory;
 import remoteInterface.IGangjwa;
 import remoteInterface.ILogin;
@@ -31,12 +33,13 @@ public class Skeleton {
 		this.registry.bind(objectName, remote);		
 	}
 	
-	public void initialie() throws RemoteException, AlreadyBoundException {		
-		this.register(ILogin.OBJECT_NAME, new CLogin());
-		this.register(IUser.OBJECT_NAME, new CUser());
-		this.register(IDirectory.OBJECT_NAME, new CDirectory());
-		this.register(IGangjwa.OBJECT_NAME, new CGangjwa());
-		this.register(IResult.OBJECT_NAME, new CResult());
+	public void initialie() throws RemoteException, AlreadyBoundException {	
+		Dao dao = new DaoFile(); 
+		this.register(ILogin.OBJECT_NAME, new CLogin(dao));
+		this.register(IUser.OBJECT_NAME, new CUser(dao));
+		this.register(IDirectory.OBJECT_NAME, new CDirectory(dao));
+		this.register(IGangjwa.OBJECT_NAME, new CGangjwa(dao));
+		this.register(IResult.OBJECT_NAME, new CResult(dao));
 	}
 
 	public void run() {

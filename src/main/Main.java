@@ -13,10 +13,10 @@ public class Main {
 	public Main() {
 		try {
 			this.skeleton = new Skeleton();
-			this.exceptionManager = new ExceptionManager();
+			this.exceptionManager = ExceptionManager.getInstance();
 		} catch (RemoteException e) {
 			// TODO Auto-generated catch block
-			exceptionManager.process(e);
+			ExceptionManager.getInstance().process(e);
 		}
 	}
 	

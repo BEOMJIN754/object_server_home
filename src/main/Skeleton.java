@@ -14,6 +14,7 @@ import control.CLogin;
 import control.CResult;
 import control.CUser;
 import model.Dao;
+import model.DaoDB;
 import model.DaoFile;
 import remoteInterface.IDirectory;
 import remoteInterface.IGangjwa;
@@ -34,7 +35,7 @@ public class Skeleton {
 	}
 	
 	public void initialie() throws RemoteException, AlreadyBoundException {	
-		Dao dao = new DaoFile(); 
+		Dao dao = new DaoDB(); 
 		this.register(ILogin.OBJECT_NAME, new CLogin(dao));
 		this.register(IUser.OBJECT_NAME, new CUser(dao));
 		this.register(IDirectory.OBJECT_NAME, new CDirectory(dao));

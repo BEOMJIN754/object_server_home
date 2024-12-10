@@ -66,6 +66,7 @@ public class DaoFile implements Dao{
 		Vector<MModel> mModels = new Vector<MModel>();
 		try {			
 			Scanner scanner = new Scanner(new File("data/"+ fileName+".txt"));
+			System.out.println("---------------"+fileName);
 			while (scanner.hasNext()) {
 				Constructor<?> contstructor = clazz.getConstructor();
 				MModel mModel = (MModel) contstructor.newInstance();

@@ -35,7 +35,7 @@ public class Skeleton {
 	}
 	
 	public void initialie() throws RemoteException, AlreadyBoundException {	
-		Dao dao = new DaoDB(); 
+		Dao dao = new DaoFile(); 
 		this.register(ILogin.OBJECT_NAME, new CLogin(dao));
 		this.register(IUser.OBJECT_NAME, new CUser(dao));
 		this.register(IDirectory.OBJECT_NAME, new CDirectory(dao));
